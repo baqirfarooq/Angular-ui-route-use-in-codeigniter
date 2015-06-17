@@ -112,5 +112,54 @@ create login.php file in View Folder
 
 </div>
 ```
+create dashboard.php file in View Folder
+```php
+<div class="container" ng-controller="DashboardCtrl">
+	
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Welcome To Dashboard</h1>
+			<p>Angular UI- Route use in CodeIgniter</p>
+			<p>
+				<a class="btn btn-primary btn-lg" href="https://github.com/baqirmemon">Learn more</a>
+			</p>
+		</div>
+	</div>
 
+
+</div>
+```
+
+edit route.php file in config
+```php
+ route['default_controller'] = "home";
+```
+
+### app.js
+create app.js file in main root (assets/js/app.js)
+```javascript
+var app = angular.module('angularCodeigniter', ['ui.router']);
+app.config(function($stateProvider,$urlRouterProvider,$locationProvider){
+
+    $stateProvider.state('home', {
+        url:'/',
+        templateUrl:BASE_URL+'home/login',
+        controller: 'LoginCtrl'
+    }).state('dashboard', {
+        url:'/dashboard',
+        templateUrl: BASE_URL+'home/dashboard',
+        controller: 'DashboardCtrl'
+    });
+    $urlRouterProvider.otherwise('/')
+});
+
+function LoginCtrl() {
+
+  
+}
+function DashboardCtrl () {
+	// body...
+}
+
+```
 
